@@ -1,15 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { MiForm } from './components/MiForm.jsx'
-import { MiForm2} from './components/MiForm2.jsx'
+import { MiRoute } from './MiRoute.jsx'
 import './index.css'
 import { FormItemsView } from './components/FormItemsView.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <FormItemsView />
+    <BrowserRouter>
+  {/*}  <FormItemsView />*/}
+  <MiRoute />
  {/*}   <MiForm />
     <MiForm2 />*/}
+    </BrowserRouter>
   </React.StrictMode>,
 )
