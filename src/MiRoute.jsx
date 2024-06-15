@@ -8,7 +8,7 @@ export const MiRoute = () => {
     <>
         <div className="container my-4">
             <table border="1">
-            <h3>Cart App</h3>
+            <h3>Cart App ger</h3>
             <Routes>
                 <Route 
                     path="miruta" 

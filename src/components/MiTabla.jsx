@@ -2,7 +2,7 @@ export const MiTabla = () => {
 
     return (
         <>
-<table border="1">
+<table border="2">
   <colgroup>
     <col class="column1" />
     <col class="columns2plus3" span="2" />
