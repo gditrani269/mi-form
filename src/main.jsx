@@ -6,15 +6,17 @@ import './index.css'
 import { FormItemsView } from './components/FormItemsView.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Red } from './Red.jsx'
+import { UsersApp } from './UsersApp.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+ {/*   <BrowserRouter>*/}
   {/*}  <FormItemsView />*/}
   {/*<MiRoute />*/}
-  <Red />
+  {/*<Red />*/}
+  <UsersApp />
  {/*}   <MiForm />
     <MiForm2 />*/}
-    </BrowserRouter>
+ {/*   </BrowserRouter>*/}
   </React.StrictMode>,
 )
