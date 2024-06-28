@@ -6,7 +6,7 @@ export const UsersApp = () => {
     return (
         <>
 
-            <h2>Users App</h2>
+            <>Users App</>
 
                     <UsersList />
 

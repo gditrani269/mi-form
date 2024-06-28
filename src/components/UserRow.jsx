@@ -7,7 +7,7 @@ const initialUserForm = [
         "id": 1,
         username: 34234,
         email: 12345,
-        Cantidad: 56768
+        Cantidad: 567689
     },
     {
         "id": 2,
@@ -30,37 +30,39 @@ export const UserRow = () => {
 
     return (
 <>
-                
+            <div>    
                 <button onClick={handleButtonClick2}>
-                    Incrementar edad2
+                    Incrementar edad
                 </button>
-                
-
-                    <td>
+            </div>  
+            <table className="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
                         <th>accion</th>
                         <th>valor</th>
                         <th>Cantidad</th>
                         <th>Saldo_pesos</th>
                         <th>Saldo_dolares</th>
-                    </td>
-                
+                    </tr>
+                </thead>
                 <tbody>
                     {
                         //console.log ("userSelected from boton: ", userSelected)
-                        userSelected.map (({accion, id, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
+                        userSelected.map (({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
                             <MiRow 
                                 key={id}
+                                id={id}
                                 accion={accion} 
                                 valor={valor} 
                                 Cantidad={Cantidad}
                                 Saldo_pesos={Saldo_pesos}
-                                Saldo_dolares={Saldo_dolares}
-                            />
+                                Saldo_dolares={Saldo_dolares} />
                         ))
                     }
                 </tbody>
-
-                </>
+            </table>  
+    </>
 
     )
 }
