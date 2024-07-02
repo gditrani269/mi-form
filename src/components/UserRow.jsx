@@ -3,6 +3,13 @@ import { useState } from "react";
 import { MiRow } from "./MiRow";
 import { MiRow2 } from "./MiRow2";
 
+/*
+npm i @mui/material
+npm i @emotion/styled
+npm i @mui/styled-engine
+*/
+import React, { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
 const initialUserForm = [
     {
         "id": 1,
@@ -75,12 +82,19 @@ const initialUserForm = [
 export const UserRow = () => {
     const [userSelected, setUserSelected] = useState (initialUserForm);
 
+    //isLoading define en que momento se muestra el componente de avance
+    const [isLoading, setIsLoading] = useState(false);
+
     async function handleButtonClick2() {
        console.log ("handleButtonClick2");
+        //hace que el componente de avance sea visible
+        setIsLoading(true);
         const response = await axios.get ('http://localhost:8080/users');
 //       console.log (response);
 //       console.log (response.data);
         setUserSelected (response.data);
+        //oculta el componente de avance
+        setIsLoading(false);
     }
 
     return (
@@ -91,6 +105,13 @@ export const UserRow = () => {
             </button>
         </div>  
         <div className="row">
+            {isLoading && (
+                <h3><CircularProgress color="secondary" /></h3>
+            )}
+ 
+            {!isLoading && (
+                <h3>Successfully API Loaded Data</h3>
+            )}
         {
             //console.log ("userSelected from boton: ", userSelected)
             userSelected.map (({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
