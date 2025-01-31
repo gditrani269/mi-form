@@ -7,6 +7,7 @@ import { FormItemsView } from './components/FormItemsView.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Red } from './Red.jsx'
 import { UsersApp } from './UsersApp.jsx'
+import { MiTabla } from './components/MiTabla.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   {/*<MiRoute />*/}
   {/*<Red />*/}
   <UsersApp />
+  {/*<MiTabla></MiTabla>*/}
  {/*}   <MiForm />
     <MiForm2 />*/}
  {/*   </BrowserRouter>*/}

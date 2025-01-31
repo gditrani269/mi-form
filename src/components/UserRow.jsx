@@ -1,5 +1,4 @@
 import axios from "axios"
-import { useState } from "react";
 import { MiRow } from "./MiRow";
 import { MiRow2 } from "./MiRow2";
 
@@ -87,11 +86,12 @@ export const UserRow = () => {
 
     async function handleButtonClick2() {
        console.log ("handleButtonClick2");
+       console.log (initialUserForm);
         //hace que el componente de avance sea visible
         setIsLoading(true);
-        const response = await axios.get ('http://localhost:8080/users');
-//       console.log (response);
-//       console.log (response.data);
+        const response = await axios.get ('http://localhost:8081/nada');
+       console.log (response);
+       console.log (response.data);
         setUserSelected (response.data);
         //oculta el componente de avance
         setIsLoading(false);
@@ -112,20 +112,36 @@ export const UserRow = () => {
             {!isLoading && (
                 <h3>Successfully API Loaded Data</h3>
             )}
-        {
-            //console.log ("userSelected from boton: ", userSelected)
-            userSelected.map (({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
-                <div className="col-4 my-2" key={ id }>
-                    <MiRow2 
-                        id={id}
-                        accion={accion} 
-                        valor={valor} 
-                        Cantidad={Cantidad}
-                        Saldo_pesos={Saldo_pesos}
-                        Saldo_dolares={Saldo_dolares} />
-                </div>
-            ))
-        }                
+            {
+                //console.log ("userSelected from boton: ", userSelected)
+                userSelected.map (({id, dolar, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
+                    <div className="col-4 my-2" key={ id }>
+                        {id != 0 && (
+                            <MiRow2 
+                                id={id}
+                                accion={accion} 
+                                valor={valor} 
+                                Cantidad={Cantidad}
+                                Saldo_pesos={Saldo_pesos}
+                                Saldo_dolares={Saldo_dolares} />)
+                        }
+                        {id == 0 && (
+                            <tr><td>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">  Dolar  {dolar} </h5>
+                                        <h5 className="card-title">  Saldo pesos  {Saldo_pesos} </h5>
+                                        <h5 className="card-title">  Saldo dolares  {Saldo_dolares} </h5>
+                                    </div>
+                                </div>
+                                </td></tr>
+                        )
+                        }
+                    </div>
+
+                ))
+            }
+            <div>  sasa </div>  
         </div>
     </>
 

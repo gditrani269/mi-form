@@ -20,7 +20,7 @@ export const MiTabla = () => {
 </table>
 
 
-<table>
+<table border="2">
   <caption>
     Awesome caption
   </caption>
