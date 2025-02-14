@@ -114,14 +114,14 @@ export const UserRow = () => {
             )}
             {
                 //console.log ("userSelected from boton: ", userSelected)
-                userSelected.map (({id, dolar, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => (
+                userSelected.map (({id, dolar, accion, valor, cantidad, Saldo_pesos, Saldo_dolares}) => (
                     <div className="col-4 my-2" key={ id }>
                         {id != 0 && (
                             <MiRow2 
                                 id={id}
                                 accion={accion} 
                                 valor={valor} 
-                                Cantidad={Cantidad}
+                                Cantidad={cantidad}
                                 Saldo_pesos={Saldo_pesos}
                                 Saldo_dolares={Saldo_dolares} />)
                         }
