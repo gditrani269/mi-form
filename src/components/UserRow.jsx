@@ -78,6 +78,7 @@ const initialUserForm = [
     }
 ];
 
+const { username } = "LoginForm";
 export const UserRow = () => {
     const [userSelected, setUserSelected] = useState (initialUserForm);
 
@@ -95,6 +96,12 @@ export const UserRow = () => {
         setUserSelected (response.data);
         //oculta el componente de avance
         setIsLoading(false);
+    }
+
+    const onInputChange = ({target}) => {
+        const {name, value} = target;
+        console.log (value)
+        
     }
 
     return (
@@ -116,6 +123,38 @@ export const UserRow = () => {
                 //console.log ("userSelected from boton: ", userSelected)
                 userSelected.map (({id, dolar, accion, valor, cantidad, Saldo_pesos, Saldo_dolares}) => (
                     <div className="col-4 my-2" key={ id }>
+                        {id == 0 && (
+                            <tr>
+                                <td>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <h5 className="card-title">  Dolar  {dolar} </h5>
+                                            <h5 className="card-title">  Saldo pesos  {Saldo_pesos} </h5>
+                                            <h5 className="card-title">  Saldo dolares  {Saldo_dolares} </h5>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            calendar
+                                            <form>
+                                            <label>Enter your name:
+                                                <input 
+                                                    className="form-control my-3 w-75"
+                                                    placeholder="Username"
+                                                    name="username"
+                                                    value={username}
+                                                    onChange={ onInputChange }/>
+                                            </label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        )
+                        }
                         {id != 0 && (
                             <MiRow2 
                                 id={id}
@@ -125,18 +164,7 @@ export const UserRow = () => {
                                 Saldo_pesos={Saldo_pesos}
                                 Saldo_dolares={Saldo_dolares} />)
                         }
-                        {id == 0 && (
-                            <tr><td>
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">  Dolar  {dolar} </h5>
-                                        <h5 className="card-title">  Saldo pesos  {Saldo_pesos} </h5>
-                                        <h5 className="card-title">  Saldo dolares  {Saldo_dolares} </h5>
-                                    </div>
-                                </div>
-                                </td></tr>
-                        )
-                        }
+
                     </div>
 
                 ))
