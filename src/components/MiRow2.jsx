@@ -7,13 +7,20 @@ import React, { useState } from "react";
 
 const data = [0, 10, 5, 2, 20, 30, 45, 8, 251, 33, 121];
 
-export const MiRow2 = ({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares}) => {
-    
+export const MiRow2 = ({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares, Fecha}) => {
+//    console.log ("---++++++------ MIROW2 ----+++++----");
     const [DataHistory, setDataHistory] = useState ();
     const [Flag, setFlag] = useState (0);
+
+    const { F_inicio, F_final } = Fecha;
+
     async function handleButtonClick2() {
         console.log ("MiRow2 - handleButtonClick2");
-        const ApiHistory = await axios.get ('http://localhost:8081/history/BMA');
+        console.log ("MiRow2 - handleButtonClick2 - accion seleccionada: ", accion);
+        console.log ("F_inicio: ", F_inicio);
+        console.log ("F_final: ", F_final);
+    //    const ApiHistory = await axios.get ('http://localhost:8081/history/BMA');
+        const ApiHistory = await axios.get ('http://127.0.0.1:8081/history/?accion='+accion+'&f_inicio='+F_inicio+'&f_final='+F_final);
     //    console.log (ApiHistory.data);
     //    console.log ("valor: ", ApiHistory.data);
     //    console.log ("length: ", ApiHistory.data.length);

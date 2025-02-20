@@ -7,13 +7,13 @@ import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 
 export const LineChart = ({valor, size}) => {
-    console.log ("LineChart - pasa aqui??");
+//    console.log ("LineChart - pasa aqui??");
 //    console.log ("LineChart - valor" + valor);
     let labels2 = [size];
     for (let i = 0; i < size; i = i + 1) {
         labels2 [i] = i;
     }
-    console.log ("labels2 - valor " + size);
+//    console.log ("labels2 - valor " + size);
     const data = {
         labels: labels2,
         datasets: [

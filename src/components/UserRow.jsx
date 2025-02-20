@@ -79,11 +79,16 @@ const initialUserForm = [
 ];
 
 const { username } = "LoginForm";
+
+const initFecha = { F_inicio: '2024-10-01', F_final: '2024-11-01' }
+
 export const UserRow = () => {
     const [userSelected, setUserSelected] = useState (initialUserForm);
 
     //isLoading define en que momento se muestra el componente de avance
     const [isLoading, setIsLoading] = useState(false);
+
+    const [fechaQuery, setFechaQuery ] = useState (initFecha);
 
     async function handleButtonClick2() {
        console.log ("handleButtonClick2");
@@ -100,8 +105,13 @@ export const UserRow = () => {
 
     const onInputChange = ({target}) => {
         const {name, value} = target;
+        console.log ("name: ", name)
         console.log (value)
-        
+        setFechaQuery ({
+            ...fechaQuery,
+            [name]: value,
+        })     
+        console.log ("fechaQuery: ", fechaQuery)  
     }
 
     return (
@@ -137,16 +147,20 @@ export const UserRow = () => {
                                 <td>
                                     <div className="card">
                                         <div className="card-body">
-                                            calendar
+                                            <h5 className="card-title">Calendar</h5>
                                             <form>
-                                            <label>Enter your name:
                                                 <input 
                                                     className="form-control my-3 w-75"
-                                                    placeholder="Username"
-                                                    name="username"
+                                                    placeholder="Inicial"
+                                                    name="F_inicio"
                                                     value={username}
                                                     onChange={ onInputChange }/>
-                                            </label>
+                                                <input 
+                                                    className="form-control my-3 w-75"
+                                                    placeholder="Final"
+                                                    name="F_final"
+                                                    value={username}
+                                                    onChange={ onInputChange }/>
                                             </form>
                                         </div>
                                     </div>
@@ -162,7 +176,8 @@ export const UserRow = () => {
                                 valor={valor} 
                                 Cantidad={cantidad}
                                 Saldo_pesos={Saldo_pesos}
-                                Saldo_dolares={Saldo_dolares} />)
+                                Saldo_dolares={Saldo_dolares}
+                                Fecha={fechaQuery} />)
                         }
 
                     </div>
