@@ -7,12 +7,19 @@ import React, { useState } from "react";
 
 const data = [0, 10, 5, 2, 20, 30, 45, 8, 251, 33, 121];
 
+const { username } = "LoginForm";
+const initFecha = { F_inicio: '2024-10-01', F_final: '2024-11-01' }
+
 export const MiRow2 = ({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares, Fecha}) => {
-//    console.log ("---++++++------ MIROW2 ----+++++----");
+    console.log ("---++++++------ MIROW2 ----+++++----");
     const [DataHistory, setDataHistory] = useState ();
     const [Flag, setFlag] = useState (0);
+    const [fechaQuery, setFechaQuery ] = useState (initFecha);
 
-    const { F_inicio, F_final } = Fecha;
+    //const { F_inicio, F_final } = Fecha;
+
+    console.log ("fechaQuery: ", fechaQuery);
+    const { F_inicio, F_final } = fechaQuery;
 
     async function handleButtonClick2() {
         console.log ("MiRow2 - handleButtonClick2");
@@ -31,6 +38,17 @@ export const MiRow2 = ({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares,
         const cPaso = "anduvo"
     }
 
+    const onInputChange = ({target}) => {
+        console.log ("MiRow2 - onInputChange CALENDAR");
+        const {name, value} = target;
+        console.log ("name: ", name)
+        console.log (value)
+        setFechaQuery ({
+            ...fechaQuery,
+            [name]: value,
+        })     
+        console.log ("fechaQuery: ", fechaQuery)  
+    }
     return (
 
         <>
@@ -41,6 +59,21 @@ export const MiRow2 = ({id, accion, valor, Cantidad, Saldo_pesos, Saldo_dolares,
                     <p className="card-text">valor: { valor }</p>
                     <p className="card-text">Pesos: { Saldo_pesos }</p>
                     <p className="card-text">Dolares: { Saldo_dolares }</p>
+                    <h5 className="card-title">Calendar</h5>
+                                            <form>
+                                                <input 
+                                                    className="form-control my-3 w-75"
+                                                    placeholder="Inicial"
+                                                    name="F_inicio"
+                                                    value={username}
+                                                    onChange={ onInputChange }/>
+                                                <input 
+                                                    className="form-control my-3 w-75"
+                                                    placeholder="Final"
+                                                    name="F_final"
+                                                    value={username}
+                                                    onChange={ onInputChange }/>
+                                            </form>
                     <button className="btn btn-primary" onClick={handleButtonClick2}
                         >hacer algo</button>
                     {Flag == 1 && (
